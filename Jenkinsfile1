@@ -27,7 +27,7 @@ spec:
     }
   }
   stages {
-    stage('Build with Kaniko')
+    stage('Build with Kaniko') {
       steps {
         container(name: 'kaniko', shell: '/busybox/sh') {
           sh '''#!/busybox/sh
@@ -38,3 +38,4 @@ spec:
            }
           }
          }
+       }
