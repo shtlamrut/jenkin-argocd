@@ -13,15 +13,17 @@ spec:
     args:
     - 9999999
     volumeMounts:
-    - name: kaniko-secret
+    - name: jenkins-docker-cfg
       mountPath: /kaniko/.docker
    volumes:
-   - name: kaniko-secret
-     secret:
-       secretName: dockercred
+   - name: jenkins-docker-cfg
+     projected:
+      sources:
+      - secret:
+          name: dockercred
        items:
        - key: .dockerconfigjson
-       path: config.json
+         path: config.json
   
 """
     }
